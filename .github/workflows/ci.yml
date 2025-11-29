@@ -28,8 +28,7 @@ jobs:
         version: 3.x
 
     - name: Install golangci-lint
-      run: |
-        curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.61.0
+      run: go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
     - name: Generate vmlinux.h
       run: |
