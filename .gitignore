@@ -1,0 +1,10 @@
+# Binaries
+ebpf-hello
+
+# Generated files
+bpf_x86_bpfel.go
+bpf_x86_bpfel.o
+vmlinux.h
+
+# Object files
+*.o

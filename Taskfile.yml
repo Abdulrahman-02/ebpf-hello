@@ -1,0 +1,38 @@
+version: '3'
+
+tasks:
+  default:
+    desc: Generate and build the project
+    deps: [generate, build]
+
+  generate:
+    desc: Generate Go bindings from C code
+    cmds:
+      - go generate
+
+  build:
+    desc: Build the Go binary
+    cmds:
+      - go build -o ebpf-hello
+
+  run:
+    desc: Run the program with sudo (required for eBPF)
+    deps: [build]
+    cmds:
+      - sudo ./ebpf-hello
+
+  clean:
+    desc: Clean up generated files
+    cmds:
+      - rm -f ebpf-hello bpf_x86_bpfel.go bpf_x86_bpfel.o
+
+  fmt:
+    desc: Format Go code
+    cmds:
+      - go fmt ./...
+
+  lint:
+    desc: Run linters
+    deps: [generate]
+    cmds:
+      - golangci-lint run
